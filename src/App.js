@@ -1,12 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Widgets from "./components/Widgets"
+import WidgetForm from "./components/WidgetForm"
+import Home from "./components/Home"
 
-function App() {
-  return (
-    <div className="App">
-     
-    </div>
-  );
+
+class App extends React.Component {
+  state = {
+    widgets: []
+  } 
+
+  addWidget = widget => this.setState({
+    widgets: this.state.widgets.concat(widget)
+  })
+
+  render() {
+    return <div>
+      <Home />
+      <Widgets widgets={this.state.widgets}/>
+      <WidgetForm addWidget={this.addWidget}/>
+    </div>;
+  }
 }
 
 export default App;
